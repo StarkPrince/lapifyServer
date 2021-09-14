@@ -35,3 +35,9 @@ export const getAllProjects = async (req, res) =>
     const pr = await Project.find({});
     res.json(pr);
 }
+
+export const deleteData = async (req, res) =>
+{
+    await Project.findByIdAndDelete(req.params.projectId);
+    res.json({ message: 'Project deleted' });
+}
