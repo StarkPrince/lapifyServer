@@ -59,5 +59,3 @@ const PORT = process.env.PORT || 5000;
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
     .catch((error) => console.log(`${error} did not connect`));
-
-    // CONNECTION_URL=mongodb+srv://StarkPrince:M14t85u2m1nt93S@cluster0.bmaqq.mongodb.net/lapify?retryWrites=true&w=majority
