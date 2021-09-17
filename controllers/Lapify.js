@@ -1,14 +1,13 @@
 import Project from '../models/Project.js';
-import md5 from 'md5';
 
 export const getData = async (req, res) =>
 {
-    const { projectId } = req.params;
-    const project = await Project.findById(projectId);
+    const { pid } = req.params;
+    const project = await Project.findById(pid);
     res.json(project);
 }
 
-export const addData = async (req, res) =>
+export const newData = async (req, res) =>
 {
     const { projectName } = req.params;
     const newtime = new Date();
@@ -22,8 +21,8 @@ export const addData = async (req, res) =>
 
 export const updateData = async (req, res) =>
 {
-    const { projectId } = req.params;
-    const project = await Project.findById(projectId);
+    const { pid } = req.params;
+    const project = await Project.findById(pid);
     const newtime = new Date();
     project.timeStamps.push(newtime.getTime());
     await project.save();
@@ -38,6 +37,6 @@ export const getAllProjects = async (req, res) =>
 
 export const deleteData = async (req, res) =>
 {
-    await Project.findByIdAndDelete(req.params.projectId);
+    await Project.findByIdAndDelete(req.params.pid);
     res.json({ message: 'Project deleted' });
 }
